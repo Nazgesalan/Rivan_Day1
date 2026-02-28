@@ -1,5 +1,5 @@
 
-<!-- Your monitor number = #$34T# -->
+<!-- Your monitor number = 92 -->
 
 # 👋 Welcome to Rivan
 *"There's no better teacher than experience"*
@@ -41,8 +41,8 @@ Import the repositories.
 ~~~
 @cmd
 cd Desktop
-mkdir _name-#$34T#
-cd _name-#$34T#
+mkdir _name-92
+cd _name-92
 dir
 ~~~
 
@@ -104,7 +104,7 @@ On-Prem Devices vs RSTHayup Labs (3-tier Enterprise)
 ~~~
 !@CoreBABA
 conf t
- hostname CoreBABA-#$34T#
+ hostname CoreBABA-92
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -118,7 +118,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.92.1.4 255.255.255.0
   no shut
   end
 ~~~
@@ -128,7 +128,7 @@ conf t
 ~~~
 !@CoreTAAS
 conf t
- hostname CoreTAAS-#$34T#
+ hostname CoreTAAS-92
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -142,7 +142,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.2 255.255.255.0
+  ip add 10.92.1.2 255.255.255.0
   no shut
   end
 ~~~
@@ -156,16 +156,16 @@ conf t
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.2
-ping 10.#$34T#.1.4
+ping 10.92.1.2
+ping 10.92.1.4
 
-nmap -v 10.#$34T#.1.2
-nmap -v 10.#$34T#.1.4
+nmap -v 10.92.1.2
+nmap -v 10.92.1.4
 ~~~
 
 Telnet the following
-- 10.#$34T#.1.2
-- 10.#$34T#.1.4
+- 10.92.1.2
+- 10.92.1.4
 
 
 <br>
@@ -1086,17 +1086,17 @@ Task3:
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.2 255.255.255.0
+  ip add 10.92.10.2 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.2 255.255.255.0
+  ip add 10.92.50.2 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.2 255.255.255.0
+  ip add 10.92.100.2 255.255.255.0
   no shut
   end
 ~~~
@@ -1108,17 +1108,17 @@ conf t
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.92.10.4 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.92.50.4 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.92.100.4 255.255.255.0
   no shut
   end
 ~~~
@@ -1181,32 +1181,32 @@ conf t
 ~~~
 !@CoreTAAS
 conf t
- ip dhcp excluded-address 10.#$34T#.1.1 10.#$34T#.1.100
- ip dhcp excluded-address 10.#$34T#.10.1 10.#$34T#.10.100
- ip dhcp excluded-address 10.#$34T#.50.1 10.#$34T#.50.100
- ip dhcp excluded-address 10.#$34T#.100.1 10.#$34T#.100.100
+ ip dhcp excluded-address 10.92.1.1 10.92.1.100
+ ip dhcp excluded-address 10.92.10.1 10.92.10.100
+ ip dhcp excluded-address 10.92.50.1 10.92.50.100
+ ip dhcp excluded-address 10.92.100.1 10.92.100.100
  ip dhcp pool POOLDATA
-  network 10.#$34T#.1.0 255.255.255.0
-  default-router 10.#$34T#.1.4
+  network 10.92.1.0 255.255.255.0
+  default-router 10.92.1.4
   domain-name MGMTDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.92.1.10
  ip dhcp pool POOLWIFI
-  network 10.#$34T#.10.0 255.255.255.0
-  default-router 10.#$34T#.10.4
+  network 10.92.10.0 255.255.255.0
+  default-router 10.92.10.4
   domain-name WIFIDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 43 ip 10.#$34T#.10.#$34T#
+  dns-server 10.92.1.10
+  option 43 ip 10.92.10.92
  ip dhcp pool POOLCCTV
-  network 10.#$34T#.50.0 255.255.255.0
-  default-router 10.#$34T#.50.4
+  network 10.92.50.0 255.255.255.0
+  default-router 10.92.50.4
   domain-name CCTVDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.92.1.10
  ip dhcp pool POOLVOICE
-  network 10.#$34T#.100.0 255.255.255.0
-  default-router 10.#$34T#.100.4
+  network 10.92.100.0 255.255.255.0
+  default-router 10.92.100.4
   domain-name VOICEDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 150 ip 10.#$34T#.100.8
+  dns-server 10.92.1.10
+  option 150 ip 10.92.100.8
   end
 ~~~
 
@@ -1476,10 +1476,10 @@ conf t
 conf t
  ip routing
  ip dhcp pool CAMERA6
-  host 10.#$34T#.50.6 255.255.255.0
+  host 10.92.50.6 255.255.255.0
   client-identifier #camera6macadd#
  ip dhcp pool CAMERA8
-  host 10.#$34T#.50.8 255.255.255.0
+  host 10.92.50.8 255.255.255.0
   client-identifier #camera8macadd#
  end
 ~~~
@@ -1706,7 +1706,7 @@ conf t
 ~~~
 !@CUCM
 conf t
- hostname CUCM-#$34T#
+ hostname CUCM-92
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -1720,7 +1720,7 @@ conf t
   login
   exec-timeout 0 0
  int fa0/0
-  ip add 10.#$34T#.100.8 255.255.255.0
+  ip add 10.92.100.8 255.255.255.0
   no shut
   end
 ~~~
@@ -1736,16 +1736,16 @@ conf t
 !@CUCM
 conf t
  dial-peer voice 1 pots
-  destination-pattern #$34T#00
+  destination-pattern 9200
   port 0/0/0
  dial-peer voice 2 pots
-  destination-pattern #$34T#01
+  destination-pattern 9201
   port 0/0/1
  dial-peer voice 3 pots
-  destination-pattern #$34T#02
+  destination-pattern 9202
   port 0/0/2
  dial-peer voice 4 pots
-  destination-pattern #$34T#03
+  destination-pattern 9203
   port 0/0/3
  end
 ~~~
@@ -1762,7 +1762,7 @@ conf t
   cptone PH  / US
  end
 !
-csim start #$34T#00
+csim start 9200
 ~~~
 
 <br>
@@ -1794,24 +1794,24 @@ conf t
   no auto-reg-ephone
   max-ephones 5
   max-dn 20
-  ip source-address 10.#$34T#.100.8 port 2000
+  ip source-address 10.92.100.8 port 2000
   create cnf-files
  ephone-dn 1
-  number #$34T#11
+  number 9211
  ephone-dn 2
-  number #$34T#22
+  number 9222
  ephone-dn 3
-  number #$34T#33
+  number 9233
  ephone-dn 4
-  number #$34T#44
+  number 9244
  ephone-dn 5
-  number #$34T#55
+  number 9255
  ephone-dn 6
-  number #$34T#66
+  number 9266
  ephone-dn 7
-  number #$34T#77
+  number 9277
  ephone-dn 8
-  number #$34T#88
+  number 9288
  ephone 1
   mac-address #ephone1macadd#
   type 8945
@@ -1981,7 +1981,7 @@ conf t
 
 ~~~
 !@cmd
-ping 10.#$34T#.100.8
+ping 10.92.100.8
 ~~~
 
 <br>
@@ -2007,7 +2007,7 @@ Customer Premises
 ~~~
 !@EDGE
 conf t
- hostname EDGE-#$34T#
+ hostname EDGE-92
  enable secret pass
  service password-encryption
  no logging console
@@ -2022,14 +2022,14 @@ conf t
   exec-timeout 0 0
  int gi 0/0/0
   no shut
-  ip add 10.#$34T#.#$34T#.1 255.255.255.0
+  ip add 10.92.92.1 255.255.255.0
   desc INSIDE
  int gi 0/0/1
   no shut
-  ip add 200.0.0.#$34T# 255.255.255.0
+  ip add 200.0.0.92 255.255.255.0
   desc OUTSIDE
  int loopback 0
-  ip add #$34T#.0.0.1 255.255.255.255
+  ip add 92.0.0.1 255.255.255.255
   desc VIRTUALIP
  end
 ~~~
@@ -2042,7 +2042,7 @@ conf t
 conf t
  int g0/1
   no switchport
-  ip add 10.#$34T#.#$34T#.4 255.255.255.0
+  ip add 10.92.92.4 255.255.255.0
   no shut
   end
 ~~~
@@ -2061,9 +2061,9 @@ conf t
  ip routing
  !
  router ospf 1
-  router-id #$34T#.0.0.1
-  network #$34T#.0.0.1 0.0.0.0 area #$34T#
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area #$34T#
+  router-id 92.0.0.1
+  network 92.0.0.1 0.0.0.0 area 92
+  network 10.92.92.0 0.0.0.255 area 92
   network 200.0.0.0 0.0.0.255 area 0
  int gi 0/0/0
   ip ospf network point-to-point
@@ -2076,8 +2076,8 @@ conf t
 !@CoreBABA
 conf t
  router ospf 1
-  router-id 10.#$34T#.#$34T#.4
-   network 10.#$34T#.0.0 0.0.255.255 area #$34T#
+  router-id 10.92.92.4
+   network 10.92.0.0 0.0.255.255 area 92
  int gi 0/1
   ip ospf network point-to-point
   end
@@ -2089,8 +2089,8 @@ conf t
 !@CUCM
 conf t
  router ospf 1
-  router-id 10.#$34T#.100.8
-  network 10.#$34T#.100.0 0.0.0.255 area #$34T#
+  router-id 10.92.100.8
+  network 10.92.100.0 0.0.0.255 area 92
   end
 ~~~
 
@@ -2118,25 +2118,25 @@ conf t
 !@EDGE
 conf t
  ip access-list extended NAT-POLICY
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.11.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.12.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.21.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.22.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.31.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.32.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.41.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.42.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.51.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.52.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.61.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.62.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.71.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.72.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.81.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.82.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.91.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.92.0.0 0.0.255.255
-  no deny ip 10.#$34T#.0.0 0.0.255.255 10.#$34T#.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.11.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.12.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.21.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.22.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.31.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.32.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.41.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.42.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.51.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.52.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.61.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.62.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.71.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.72.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.81.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.82.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.91.0.0 0.0.255.255
+  deny ip 10.92.0.0 0.0.255.255 10.92.0.0 0.0.255.255
+  no deny ip 10.92.0.0 0.0.255.255 10.92.0.0 0.0.255.255
   permit ip any any
   end
 ~~~
@@ -2186,10 +2186,10 @@ conf t
 ~~~
 !@CoreTAAS
 config t
- hostname CoreTAAS-#$34T#-(PLDT)
+ hostname CoreTAAS-92-(PLDT)
  Track 1 Int gi 0/1 line-protocol
  int vlan 1
-  standby 1 ip 10.#$34T#.1.16
+  standby 1 ip 10.92.1.16
   standby 1 preempt
   standby 1 Priority 150
   standby 1 Track 1 decrement 60
@@ -2212,9 +2212,9 @@ conf t
 ~~~
 !@CoreBABA
 config t
- hostname CoreBABA-#$34T#-(GLOBE)
+ hostname CoreBABA-92-(GLOBE)
  Int vlan 1
-  standby 1 ip 10.#$34T#.1.16
+  standby 1 ip 10.92.1.16
   standby 1 preempt
   standby 1 Priority 100
   end
@@ -2232,8 +2232,8 @@ config t
 conf t
  no router ospf 1
  router ospf 1
-  router-id #$34T#.0.0.1
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
+  router-id 92.0.0.1
+  network 10.92.92.0 0.0.0.255 area 0
   default-information originate always
   end
 ~~~
@@ -2244,7 +2244,7 @@ conf t
 !@EDGE
 conf t
  int tun1
-  ip add 172.16.1.#$34T# 255.255.255.0
+  ip add 172.16.1.92 255.255.255.0
   tunnel source g0/0/1
   tunnel mode gre multipoint
   no shut
@@ -2270,7 +2270,7 @@ conf t
   ip nhrp map 172.16.1.82 200.0.0.82
   ip nhrp map 172.16.1.91 200.0.0.91
   ip nhrp map 172.16.1.92 200.0.0.92
-  no ip nhrp map 172.16.1.#$34T# 200.0.0.#$34T#
+  no ip nhrp map 172.16.1.92 200.0.0.92
   end
 ~~~
 
@@ -2298,7 +2298,7 @@ conf t
  ip route 10.91.0.0 255.255.0.0 172.16.1.91 252
  ip route 10.92.0.0 255.255.0.0 172.16.1.92 252
  !
- no ip route 10.#$34T#.0.0 255.255.0.0 172.16.1.#$34T# 252
+ no ip route 10.92.0.0 255.255.0.0 172.16.1.92 252
  end
 ~~~ 
 
@@ -2323,12 +2323,12 @@ conf t
   ip tcp adjust-mss 1360
  no router ospf 1
  router ospf 1
-  router-id #$34T#.0.0.1
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area #$34T#
+  router-id 92.0.0.1
+  network 10.92.92.0 0.0.0.255 area 92
   default-information originate always
  router eigrp 100
   no auto-summary
-  router-id 200.0.0.#$34T#
+  router-id 200.0.0.92
   network 200.0.0.0 0.0.0.255
   network 172.16.1.0 0.0.0.255
   end
