@@ -1,0 +1,71 @@
+!@D3Pentest
+sudo su
+nmcli connection add \
+	type ethernet \
+	con-name TUNAYNALAN \
+	ifname eth0 \
+	ipv4.method manual \
+	ipv4.addresses 10.92.1.12/24 \
+	autoconnect yes
+
+nmcli connection up TUNAYNALAN
+ping 10.92.1.4
+
+yersinia -G
+
+
+
+Setup 802.1X on Cisco
+
+!@CoreTAAS
+conf t
+Username admin priv 12 secret pass
+aaa new-model
+radius server WINRAD
+address ipv4 10.92.1.8 auth-port 1812 acct-port 1813
+key keykeymo
+exit
+aaa group server radius RADGROUP
+server name WINRAD
+exit
+!
+aaa authentication login default group RADGROUP local
+aaa authorization exec default group RADGROUP local
+line vty 0 14
+login authentication default
+end 
+
+!@A3
+conf t
+Username admin priv 12 secret pass
+aaa new-model
+radius server WINRAD
+address ipv4 208.8.8.8 auth-port 1812 acct-port 1813
+key keykeymo
+exit
+aaa group server radius RADGROUP
+server name WINRAD
+exit
+!
+aaa authentication login default group RADGROUP local
+aaa authorization exec default group RADGROUP local
+line vty 0 4
+login authentication default
+end 
+
+!@CoreTAAS
+conf t
+no aaa new-model
+
+shell:priv-lvl=15
+
+
+NETCONF: 830 (SSH) (XML)
+RPC
+- get-config
+
+RESTCONF: 443 (XML, JSON)
+- get
+- put
+- patch
+- delete
