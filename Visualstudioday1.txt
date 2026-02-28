@@ -1,0 +1,12 @@
+config t
+no event manager applet nmapLo0
+event manager applet nmapLo0
+  event syslog pattern "Interface Loopback0.* down" period 1
+  action 2.0 cli command "enable"
+  action 2.1 cli command "guestshell run nmap -v neu.edu.ph"
+  action 2.2 cli command "conf t"
+  action 2.3 cli command "interface lo0"
+  action 2.4 cli command "no shutdown"
+  action 3.0 syslog msg "BAWAL SHUTDOWN, Loopback0 was brought up via EEM"
+  end
+event manager run nmapLo0
